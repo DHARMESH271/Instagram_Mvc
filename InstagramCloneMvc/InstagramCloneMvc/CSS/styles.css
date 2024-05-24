@@ -1,0 +1,261 @@
+﻿body {
+    background-color: #cec9c9;
+}
+/* 
+.main{  
+    width: 15%;
+    height: 100%;
+    float:left;
+    display: block;
+    top: 0;
+} */
+
+.main-logo {
+    width: 10%;
+    height: 4%;
+    margin-bottom: 8%;
+}
+
+.logo {
+    padding-left: 5px;
+    padding-top: 15px;
+    padding-bottom: 10px;
+    height: 65px;
+    width: 140px;
+}
+
+.link-color {
+    background-color: transparent;
+    /* font-family: Arial, Helvetica, sans-serif;  */
+    color: black;
+    text-decoration: none;
+    /* margin-left: 3%; */
+    /* font-size: 23px; */
+    /*padding-left: 2%;*/
+}
+
+.icon {
+    margin-left: 3%;
+    font-size: 23px;
+}
+
+.div-main {
+    margin-bottom: 13%;
+}
+
+.main-font {
+    font-size: medium;
+    font-family: Arial, Helvetica, sans-serif;
+   /* padding-left: 3%;*/
+}
+
+.div-main-more {
+    margin-top: 13%;
+}
+
+/* Second Div */
+.div-feed {
+    width: 100%;
+    height: 100%;
+    float: left;
+    display: block;
+    margin-top: 3%;
+    position: relative;
+    margin-left: 8%;
+    /* box-shadow: 5px 0 3px -3px #00000030; */
+}
+
+.div-story {
+    width: 100%;
+    display: flex;
+    float: left;
+    margin-top: 0%;
+    margin-right: 0%;
+    padding: -0px 5px 10px 10px;
+    border: 1px solid #00000030;
+    position: sticky;
+    overflow-y: hidden;
+}
+
+.div-story::-webkit-scrollbar {
+    display: none;
+}
+
+
+.stories-scroll {
+    margin-left: 2%;
+    /* padding-left: 20px; */
+}
+
+.div-post {
+    position: relative;
+    width: 100%;
+    display: block;
+    float: left;
+    margin-top: 1%;
+    /* margin-left: 15%; */
+    margin-right: 0%;
+    padding: -0px 5px 20px 10px;
+    border: 1px solid #00000030;
+    border-radius: 10px;
+}
+
+
+/* Third Div */
+.div-profile {
+    float: left;
+    width: 24%;
+    height: 100%;
+    padding-left: 2%;
+    display: block;
+    /* position: absolute; */
+    /* display: flex; */
+    float: left;
+}
+
+.div-profile-picture {
+    width: 90%;
+    float: left;
+    height: 20%;
+}
+
+.div-profile-image {
+    height: 60px;
+    width: 60px;
+    border: 3px solid green;
+    border-radius: 100%;
+    float: left;
+}
+
+.div-profile-image-1 {
+    height: 60px;
+    width: 60px;
+    border: 3px solid #cd486b;
+    border-radius: 100%;
+    float: left;
+}
+
+.profile-font {
+    text-align: center;
+    float: left;
+    padding-left: 6%;
+    padding-top: 5%;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: medium;
+    float: left;
+}
+
+.div-profile-image-username {
+    padding-top: 2px;
+    height: 40px;
+    width: 40px;
+    border: 2px solid #cd486b;
+    border-radius: 100%;
+    float: left;
+}
+
+.profile-name {
+    font-size: large;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    
+}
+
+.threedot-icon {
+    padding-left: 70%;
+}
+
+.threedot-icon-1 {
+    padding-left: 62%;
+}
+
+.icon-div {
+    height: 25px !important;
+}
+
+.icon-emoji {
+    padding-left: 10px;
+}
+
+.icon-fav {
+    padding-left: 80%;
+}
+
+/* 2-nd-div */
+
+.div-suggestion-profile-image {
+    height: 45px;
+    width: 45px;
+    border: 2px solid green;
+    border-radius: 100%;
+    float: left;
+}
+
+.div-suggestion-profile-image-1 {
+    height: 45px;
+    width: 45px;
+    border: 2px solid #cd486b;
+    border-radius: 100%;
+    float: left;
+}
+
+.suggestion-profile-font {
+    text-align: center;
+    float: left;
+    padding-left: 7%;
+    padding-top: 5%;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: medium;
+    float: left;
+}
+/* formss */
+
+
+.container-fluid {
+    /* background: red; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* height:100vh; */
+}
+
+.form-container {
+    /* background-image: url('/Images/insta.avif'); */
+    /* background-color: #F9CE34  #EE2A7B  #6228D7; */
+    /* background: linear-gradient(#F9CE34 , #EE2A7B , #6228D7); */
+    background: linear-gradient(rgba(249, 206, 52, 0.5), rgba(238, 42, 123, 0.5),rgba(98, 40, 215, 0.5));
+    background-size: cover;
+}
+
+/* instagaram section */
+
+.div-mainprofile {
+    width: 15%;
+    height: 100%;
+    float: left;
+    display: block;
+    /* box-shadow: 5px 0 3px -3px #00000030; */
+    /* border: solid 1px  #00000030; */
+    position: -webkit-sticky;
+    top: 0;
+}
+
+
+/* second profile seection */
+
+
+.div-profilepage {
+    border: solid 1px #00000030;
+    background-color: rgba(227, 188, 154, 1);
+}
+
+.div-profilepage-image {
+    height: 170px;
+    width: 170px;
+    border: 3px solid green;
+    border-radius: 100%;
+    /* float:left;    */
+}
+
+.div-profilephotofont {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}

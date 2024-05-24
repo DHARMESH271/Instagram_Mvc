@@ -1,0 +1,307 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="InstagramModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="UserDetail">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="UserName" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="DateCreated" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="StoryUploads" Relationship="InstagramModel.FK__StoryUpload__Id__3B75D760" FromRole="UserDetail" ToRole="StoryUpload" />
+    <NavigationProperty Name="PostUploads" Relationship="InstagramModel.FK__PostUpload__Id__49C3F6B7" FromRole="UserDetail" ToRole="PostUpload" />
+    <Property Name="UserProfileImage" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Gender" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Followers" Relationship="InstagramModel.FK__Followers__Follo__4E88ABD4" FromRole="UserDetail" ToRole="Follower" />
+    <NavigationProperty Name="Followers1" Relationship="InstagramModel.FK__Followers__Follo__4F7CD00D" FromRole="UserDetail" ToRole="Follower" />
+    <NavigationProperty Name="Likeds" Relationship="InstagramModel.FK__Liked__UserId__52593CB8" FromRole="UserDetail" ToRole="Liked" />
+    <NavigationProperty Name="Comments" Relationship="InstagramModel.FK__Comments__UserId__5812160E" FromRole="UserDetail" ToRole="Comment" />
+    <NavigationProperty Name="Notifications" Relationship="InstagramModel.FK__Notificat__Trigg__66603565" FromRole="UserDetail" ToRole="Notification" />
+    <NavigationProperty Name="Notifications1" Relationship="InstagramModel.FK__Notificat__UserI__656C112C" FromRole="UserDetail" ToRole="Notification" />
+  </EntityType>
+  <EntityContainer Name="InstagramEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="UserDetails" EntityType="Self.UserDetail" />
+    <FunctionImport Name="SpUserLogin">
+      <Parameter Name="UserName" Mode="In" Type="String" />
+      <Parameter Name="Password" Mode="In" Type="String" />
+    </FunctionImport>
+    <EntitySet Name="StoryUploads" EntityType="InstagramModel.StoryUpload" />
+    <AssociationSet Name="FK__StoryUpload__Id__3B75D760" Association="InstagramModel.FK__StoryUpload__Id__3B75D760">
+      <End Role="UserDetail" EntitySet="UserDetails" />
+      <End Role="StoryUpload" EntitySet="StoryUploads" />
+    </AssociationSet>
+    <EntitySet Name="PostUploads" EntityType="InstagramModel.PostUpload" />
+    <AssociationSet Name="FK__PostUpload__Id__49C3F6B7" Association="InstagramModel.FK__PostUpload__Id__49C3F6B7">
+      <End Role="UserDetail" EntitySet="UserDetails" />
+      <End Role="PostUpload" EntitySet="PostUploads" />
+    </AssociationSet>
+    <EntitySet Name="Followers" EntityType="InstagramModel.Follower" />
+    <AssociationSet Name="FK__Followers__Follo__4E88ABD4" Association="InstagramModel.FK__Followers__Follo__4E88ABD4">
+      <End Role="UserDetail" EntitySet="UserDetails" />
+      <End Role="Follower" EntitySet="Followers" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Followers__Follo__4F7CD00D" Association="InstagramModel.FK__Followers__Follo__4F7CD00D">
+      <End Role="UserDetail" EntitySet="UserDetails" />
+      <End Role="Follower" EntitySet="Followers" />
+    </AssociationSet>
+    <EntitySet Name="Likeds" EntityType="InstagramModel.Liked" />
+    <AssociationSet Name="FK__Liked__PostId__534D60F1" Association="InstagramModel.FK__Liked__PostId__534D60F1">
+      <End Role="PostUpload" EntitySet="PostUploads" />
+      <End Role="Liked" EntitySet="Likeds" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Liked__UserId__52593CB8" Association="InstagramModel.FK__Liked__UserId__52593CB8">
+      <End Role="UserDetail" EntitySet="UserDetails" />
+      <End Role="Liked" EntitySet="Likeds" />
+    </AssociationSet>
+    <EntitySet Name="Comments" EntityType="InstagramModel.Comment" />
+    <AssociationSet Name="FK__Comments__PostId__571DF1D5" Association="InstagramModel.FK__Comments__PostId__571DF1D5">
+      <End Role="PostUpload" EntitySet="PostUploads" />
+      <End Role="Comment" EntitySet="Comments" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Comments__UserId__5812160E" Association="InstagramModel.FK__Comments__UserId__5812160E">
+      <End Role="UserDetail" EntitySet="UserDetails" />
+      <End Role="Comment" EntitySet="Comments" />
+    </AssociationSet>
+    <EntitySet Name="Notifications" EntityType="InstagramModel.Notification" />
+    <AssociationSet Name="FK__Notificat__PostI__6477ECF3" Association="InstagramModel.FK__Notificat__PostI__6477ECF3">
+      <End Role="PostUpload" EntitySet="PostUploads" />
+      <End Role="Notification" EntitySet="Notifications" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Notificat__Trigg__66603565" Association="InstagramModel.FK__Notificat__Trigg__66603565">
+      <End Role="UserDetail" EntitySet="UserDetails" />
+      <End Role="Notification" EntitySet="Notifications" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Notificat__UserI__656C112C" Association="InstagramModel.FK__Notificat__UserI__656C112C">
+      <End Role="UserDetail" EntitySet="UserDetails" />
+      <End Role="Notification" EntitySet="Notifications" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Comments_ParentCommentId" Association="InstagramModel.FK_Comments_ParentCommentId">
+      <End Role="Comment" EntitySet="Comments" />
+      <End Role="Comment1" EntitySet="Comments" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="StoryUpload">
+    <Key>
+      <PropertyRef Name="StoryId" />
+    </Key>
+    <Property Name="StoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StoryImage" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="StoryDate" Type="DateTime" Precision="3" />
+    <Property Name="Id" Type="Int32" />
+    <NavigationProperty Name="UserDetail" Relationship="InstagramModel.FK__StoryUpload__Id__3B75D760" FromRole="StoryUpload" ToRole="UserDetail" />
+  </EntityType>
+  <Association Name="FK__StoryUpload__Id__3B75D760">
+    <End Type="InstagramModel.UserDetail" Role="UserDetail" Multiplicity="0..1" />
+    <End Type="InstagramModel.StoryUpload" Role="StoryUpload" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserDetail">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="StoryUpload">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="PostUpload">
+    <Key>
+      <PropertyRef Name="PostId" />
+    </Key>
+    <Property Name="PostId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PostImage" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="PostCaption" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="PostDate" Type="DateTime" Precision="3" />
+    <Property Name="Id" Type="Int32" />
+    <NavigationProperty Name="UserDetail" Relationship="InstagramModel.FK__PostUpload__Id__49C3F6B7" FromRole="PostUpload" ToRole="UserDetail" />
+    <Property Name="IsArchieve" Type="Boolean" />
+    <Property Name="IsDeleted" Type="Boolean" />
+    <NavigationProperty Name="Likeds" Relationship="InstagramModel.FK__Liked__PostId__534D60F1" FromRole="PostUpload" ToRole="Liked" />
+    <NavigationProperty Name="Comments" Relationship="InstagramModel.FK__Comments__PostId__571DF1D5" FromRole="PostUpload" ToRole="Comment" />
+    <NavigationProperty Name="Notifications" Relationship="InstagramModel.FK__Notificat__PostI__6477ECF3" FromRole="PostUpload" ToRole="Notification" />
+  </EntityType>
+  <Association Name="FK__PostUpload__Id__49C3F6B7">
+    <End Type="InstagramModel.UserDetail" Role="UserDetail" Multiplicity="0..1" />
+    <End Type="InstagramModel.PostUpload" Role="PostUpload" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserDetail">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PostUpload">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Follower">
+    <Key>
+      <PropertyRef Name="FollowerId" />
+    </Key>
+    <Property Name="FollowerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FollowerUserId" Type="Int32" Nullable="false" />
+    <Property Name="FollowingUserId" Type="Int32" Nullable="false" />
+    <Property Name="FollowDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="UserDetail" Relationship="InstagramModel.FK__Followers__Follo__4E88ABD4" FromRole="Follower" ToRole="UserDetail" />
+    <NavigationProperty Name="UserDetail1" Relationship="InstagramModel.FK__Followers__Follo__4F7CD00D" FromRole="Follower" ToRole="UserDetail" />
+  </EntityType>
+  <Association Name="FK__Followers__Follo__4E88ABD4">
+    <End Type="InstagramModel.UserDetail" Role="UserDetail" Multiplicity="1" />
+    <End Type="InstagramModel.Follower" Role="Follower" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserDetail">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Follower">
+        <PropertyRef Name="FollowerUserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Followers__Follo__4F7CD00D">
+    <End Type="InstagramModel.UserDetail" Role="UserDetail" Multiplicity="1" />
+    <End Type="InstagramModel.Follower" Role="Follower" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserDetail">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Follower">
+        <PropertyRef Name="FollowingUserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Liked">
+    <Key>
+      <PropertyRef Name="LikeId" />
+    </Key>
+    <Property Name="LikeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="Int32" />
+    <Property Name="PostId" Type="Int32" />
+    <Property Name="LikeDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="PostUpload" Relationship="InstagramModel.FK__Liked__PostId__534D60F1" FromRole="Liked" ToRole="PostUpload" />
+    <NavigationProperty Name="UserDetail" Relationship="InstagramModel.FK__Liked__UserId__52593CB8" FromRole="Liked" ToRole="UserDetail" />
+  </EntityType>
+  <Association Name="FK__Liked__PostId__534D60F1">
+    <End Type="InstagramModel.PostUpload" Role="PostUpload" Multiplicity="0..1" />
+    <End Type="InstagramModel.Liked" Role="Liked" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PostUpload">
+        <PropertyRef Name="PostId" />
+      </Principal>
+      <Dependent Role="Liked">
+        <PropertyRef Name="PostId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Liked__UserId__52593CB8">
+    <End Type="InstagramModel.UserDetail" Role="UserDetail" Multiplicity="0..1" />
+    <End Type="InstagramModel.Liked" Role="Liked" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserDetail">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Liked">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Comment">
+    <Key>
+      <PropertyRef Name="CommentId" />
+    </Key>
+    <Property Name="CommentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PostId" Type="Int32" />
+    <Property Name="UserId" Type="Int32" />
+    <Property Name="ParentCommentId" Type="Int32" />
+    <Property Name="CommentText" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="CommentDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="PostUpload" Relationship="InstagramModel.FK__Comments__PostId__571DF1D5" FromRole="Comment" ToRole="PostUpload" />
+    <NavigationProperty Name="UserDetail" Relationship="InstagramModel.FK__Comments__UserId__5812160E" FromRole="Comment" ToRole="UserDetail" />
+    <NavigationProperty Name="Comments1" Relationship="InstagramModel.FK_Comments_ParentCommentId" FromRole="Comment" ToRole="Comment1" />
+    <NavigationProperty Name="Comment1" Relationship="InstagramModel.FK_Comments_ParentCommentId" FromRole="Comment1" ToRole="Comment" />
+  </EntityType>
+  <Association Name="FK__Comments__PostId__571DF1D5">
+    <End Type="InstagramModel.PostUpload" Role="PostUpload" Multiplicity="0..1" />
+    <End Type="InstagramModel.Comment" Role="Comment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PostUpload">
+        <PropertyRef Name="PostId" />
+      </Principal>
+      <Dependent Role="Comment">
+        <PropertyRef Name="PostId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Comments__UserId__5812160E">
+    <End Type="InstagramModel.UserDetail" Role="UserDetail" Multiplicity="0..1" />
+    <End Type="InstagramModel.Comment" Role="Comment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserDetail">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Comment">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Notification">
+    <Key>
+      <PropertyRef Name="NotificationID" />
+    </Key>
+    <Property Name="NotificationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserID" Type="Int32" />
+    <Property Name="TriggeringUserID" Type="Int32" />
+    <Property Name="PostID" Type="Int32" />
+    <Property Name="NotificationType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="NotificationText" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="NotificationDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="PostUpload" Relationship="InstagramModel.FK__Notificat__PostI__6477ECF3" FromRole="Notification" ToRole="PostUpload" />
+    <NavigationProperty Name="UserDetail" Relationship="InstagramModel.FK__Notificat__Trigg__66603565" FromRole="Notification" ToRole="UserDetail" />
+    <NavigationProperty Name="UserDetail1" Relationship="InstagramModel.FK__Notificat__UserI__656C112C" FromRole="Notification" ToRole="UserDetail" />
+  </EntityType>
+  <Association Name="FK__Notificat__PostI__6477ECF3">
+    <End Type="InstagramModel.PostUpload" Role="PostUpload" Multiplicity="0..1" />
+    <End Type="InstagramModel.Notification" Role="Notification" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PostUpload">
+        <PropertyRef Name="PostId" />
+      </Principal>
+      <Dependent Role="Notification">
+        <PropertyRef Name="PostID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Notificat__Trigg__66603565">
+    <End Type="InstagramModel.UserDetail" Role="UserDetail" Multiplicity="0..1" />
+    <End Type="InstagramModel.Notification" Role="Notification" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserDetail">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Notification">
+        <PropertyRef Name="TriggeringUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Notificat__UserI__656C112C">
+    <End Type="InstagramModel.UserDetail" Role="UserDetail" Multiplicity="0..1" />
+    <End Type="InstagramModel.Notification" Role="Notification" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserDetail">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Notification">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Comments_ParentCommentId">
+    <End Type="InstagramModel.Comment" Role="Comment" Multiplicity="0..1" />
+    <End Type="InstagramModel.Comment" Role="Comment1" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Comment">
+        <PropertyRef Name="CommentId" />
+      </Principal>
+      <Dependent Role="Comment1">
+        <PropertyRef Name="ParentCommentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

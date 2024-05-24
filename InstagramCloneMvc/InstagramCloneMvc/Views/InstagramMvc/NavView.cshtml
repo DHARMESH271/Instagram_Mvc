@@ -1,0 +1,256 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage</title>
+    <!-- <link rel="icon" type="image/x-icon" href="/Images/icons8-instagram-32.png"> -->
+    <link rel="stylesheet" type="text/css" href="/CSS/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- <link rel="stylesheet" href="/CSS/bootstrap.min.css"> -->
+    <link rel="stylesheet" href="/CSS/aise.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="~/MyjavaScript/MyJavaScriptfile.js"></script>
+
+
+    <!-- <link type="image/png" sizes="32x32" rel="icon" href=".../icons8-instagram-32.png"> -->
+    <!-- <link type="image/png" sizes="32x32" rel="icon" href=".../icons8-instagram-32.png"> -->
+    <!-- <script  src="/JavaScrpit/bootstrap.bundle.min.js"></script> -->
+</head>
+<body>
+    <!-- nav-div -->
+
+    <div class="container-fluid m-0 p-0 ">
+        <div class="row gx-0">
+            <div class=" div-main col-lg-2 col-md-2 col-sm-0 position-static ">
+                <button class="btn btn-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample" aria-controls="offcanvasExample">
+                    <img src="/Images/Instagram_logo.svg.png" alt="" class="logo">
+                </button>
+
+                <div class="div-main">
+                    <a href="" class="link-color">
+                        <span class='fa fa-home'></span>
+                        <span class="main-font">Home</span>
+                    </a>
+                </div>
+
+                <div class="div-main">
+                    <a href="" class="link-color">
+                        <span class='fa fa-search'></span>
+                        <span class="main-font">Search</span>
+                    </a>
+                </div>
+
+                <div class="div-main">
+                    <a href="" class="link-color">
+                        <span class='fa fa-compass'></span>
+                        <span class="main-font">Explore</span>
+                    </a>
+                </div>
+
+                <div class="div-main">
+                    <a href="" class="link-color">
+                        <span class='fa fa-comment'></span>
+                        <span class="main-font">Messages</span>
+                    </a>
+
+                </div>
+
+                <div class="div-main">
+                    <a href="" class="link-color">
+                        <span class='fa fa-heart-o'></span>
+                        <span class="main-font">Notifications</span>
+                    </a>
+
+                </div>
+
+                <div class="div-main">
+                    <a class="link-color" href="#" data-toggle="modal" data-target="#PostModal">
+                        <span class='fa fa-plus-square-o'></span>
+                        <span class="main-font">Create</span>
+                    </a>
+
+                </div>
+
+                <div class="div-main">
+                    <a href="/HTML/form.html" class="link-color">
+                        <span class='fa fa-user'></span>
+                        <span class="main-font">Profile</span>
+                    </a>
+
+                </div>
+
+                <div class="div-main-more">
+                    <a href="" class="link-color" onclick="Logout()">
+                        <span class='fa fa-sign-out'></span>
+                        <span class="main-font">Logout</span>
+                    </a>
+                </div>
+
+            </div>
+
+
+
+
+
+            <!-- 2 nd main div  -->
+            <!--<div class="div-feed col-lg-6 accordion-body  col-md-6 col-sm-12 p-1">
+                <div class="div-story col-lg-10 col-md-12 col-sm-12 ">
+                    <span class="stories-scroll">
+                        <a href="" class="link-color"><img src="/Images/viratrcb.png" alt="Profile" class="div-profile-image-1"></a>
+                    </span>
+
+                    <span class="stories-scroll">
+                        <a href="" class="link-color"><img src="/Images/virat-kholi.jpg" alt="Profile" class="div-profile-image-1"></a>
+                    </span>
+
+                    <span class="stories-scroll">
+                        <a href="" class="link-color"><img src="/Images/meme-png.png" alt="Profile" class="div-profile-image-1"></a>
+                    </span>
+
+                    <span class="stories-scroll">
+                        <a href="" class="link-color"><img src="/Images/virat-kholi.jpg" alt="Profile" class="div-profile-image-1"></a>
+                    </span>
+
+
+                </div>-->
+            <!-- Post    -->
+            <!--<div class="div-post col-lg-10 col-md-12 col-sm-12 p-0">
+                    <div class="card mb-3" id="virat">
+                        <div>
+                            <a href="" class="link-color"><img src="/Images/virat-png-1.png" alt="Profile" class="div-profile-image-username"></a>
+                            <span class="p-1 profile-name ">virat.kholi</span>
+
+                        </div>
+                        <img src="/Images/virat-kholi.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <div class="icon-div mb-2">
+                                <button class="btn btn-white btn-icon " title="Like"><span class="fa fa-heart-o"></span></button>
+                                <button class="btn btn-white btn-icon " title="Comment"><span class="fa fa-comment-o"></span></button>
+                                <button class="btn btn-white btn-icon " title="Share"><span class="fa fa-telegram"></span></button>
+
+                            </div>
+
+                            <p class="card-text  mb-0">
+                                <b><span class="profile-name">virat.kholi</span> </b>
+                                "Channeling focus and determination on and off the pitch. 🏏✨ #StayDriven #ViratMode"
+
+                                <div class="mb-3 mt-1">
+
+                                    <input type="text" class="w-100 border-0" placeholder="Add a Comment">
+                                </div>
+                            </p>
+
+
+                            <small class="text-muted text-end ps-1">5 MINS AGO</small>
+                        </div>
+                    </div>
+
+                    <div class="card mb-2" id="highbro0">
+                        <div class="p-1">
+                            <a href="" class="link-color"><img src="/Images/meme-png.png" alt="Profile" class="div-profile-image-username"></a>
+                            <span class="p-1 profile-name ">high_bro0</span>
+
+                        </div>
+                        <img src="/Images/Meme.png" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <div class="icon-div mb-2">
+                                <button class="btn btn-white btn-icon " title="Like"><span class="fa fa-heart-o"></span></button>
+                                <button class="btn btn-white btn-icon " title="Comment"><span class="fa fa-comment-o"></span></button>
+                                <button class="btn btn-white btn-icon " title="Share"><span class="fa fa-telegram"></span></button>
+
+                            </div>
+
+                            <p class="card-text mb-0">
+                                <b><span class=" profile-name ">high_bro0</span> </b>
+                                "Brace yourselves, Monday is coming. Let's tackle it with humor and caffeine! ☕😂 #MondayMood #MemeMagic"
+
+                                <div class="mb-3 mt-1">
+
+                                    <input type="text" class="w-100 border-0" placeholder="Add a Comment">
+                                </div>
+                            </p>
+
+                            <small class="text-muted ps-1">25 MINS AGO</small>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>-->
+            <!-- <3-div-profile -->
+            @*<div class="div-profile col-lg-3 col-md-4 mt-4 p-4  sticky-top">
+
+                    <div class="div-profile-picture  w-100  ">
+                        <a href="" class="link-color"><img src="/Images/admin.jpg" alt="Profile" class="div-profile-image"></a>
+                        <a href="" class="link-color profile-font"><span class="">Virat_Kholi</span> </a>
+                        <a href="" class="justify-content-end link-color profile-font text-primary"><span class="m-5">Follow</span></a>
+                    </div>
+
+
+
+                    <div class="suggestion w-100">
+                        <div class=" suggestion-text    ">
+                            <span class="text-muted w-100">Suggestions For You </span>
+                        </div>
+
+                        <div class="div-profile-picture  w-100  ">
+                            <a href="" class="link-color"><img src="/Images/admin.jpg" alt="Profile" class="div-profile-image"></a>
+                            <a href="" class="link-color profile-font"><span class="">Virat_Kholi</span> </a>
+                            <a href="" class="justify-content-end link-color profile-font text-primary"><span class="m-5">Follow</span></a>
+                        </div>
+
+                        <div class="div-profile-picture  w-100  ">
+                            <a href="" class="link-color"><img src="/Images/admin.jpg" alt="Profile" class="div-profile-image"></a>
+                            <a href="" class="link-color profile-font"><span class="">Virat_Kholi</span> </a>
+                            <a href="" class="justify-content-end link-color profile-font text-primary"><span class="m-5">Follow</span></a>
+                        </div>
+                        <div class="div-profile-picture  w-100  ">
+                            <a href="" class="link-color"><img src="/Images/admin.jpg" alt="Profile" class="div-profile-image"></a>
+                            <a href="" class="link-color profile-font"><span class="">Virat_Kholi</span> </a>
+                            <a href="" class="justify-content-end link-color profile-font text-primary"><span class="m-5">Follow</span></a>
+                        </div>
+                        <div class="div-profile-picture  w-100  ">
+                            <a href="" class="link-color"><img src="/Images/admin.jpg" alt="Profile" class="div-profile-image"></a>
+                            <a href="" class="link-color profile-font"><span class="">Virat_Kholi</span> </a>
+                            <a href="" class="justify-content-end link-color profile-font text-primary"><span class="m-5">Follow</span></a>
+                        </div>
+
+                                           <div class="div-profile-picture w-100 mt-2 pt-3  d-block Lead ">
+                            About | Help | Press | API | Jobs | Privacy | Terms | Locations | Language
+                        </div>
+
+                        <div class="div-profile-picture w-100 mt-2 pt-3  d-block Lead ">
+
+                        </div>
+                    </div>
+
+                </div>*@
+        </div>
+        @*MODAL PART*@
+        <div class="modal fade" id="PostModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        ...
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        Tooltips and po
+    </div>
+
+</body>
+</html> 

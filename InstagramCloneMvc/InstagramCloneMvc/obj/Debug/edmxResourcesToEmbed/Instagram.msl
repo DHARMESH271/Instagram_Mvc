@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="InstagramModelStoreContainer" CdmEntityContainer="InstagramEntities">
+    <EntitySetMapping Name="UserDetails">
+      <EntityTypeMapping TypeName="InstagramModel.UserDetail">
+        <MappingFragment StoreEntitySet="UserDetail">
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="UserProfileImage" ColumnName="UserProfileImage" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="SpUserLogin" FunctionName="InstagramModel.Store.SpUserLogin" />
+    <EntitySetMapping Name="StoryUploads">
+      <EntityTypeMapping TypeName="InstagramModel.StoryUpload">
+        <MappingFragment StoreEntitySet="StoryUpload">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="StoryDate" ColumnName="StoryDate" />
+          <ScalarProperty Name="StoryImage" ColumnName="StoryImage" />
+          <ScalarProperty Name="StoryId" ColumnName="StoryId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PostUploads">
+      <EntityTypeMapping TypeName="InstagramModel.PostUpload">
+        <MappingFragment StoreEntitySet="PostUpload">
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="IsArchieve" ColumnName="IsArchieve" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="PostDate" ColumnName="PostDate" />
+          <ScalarProperty Name="PostCaption" ColumnName="PostCaption" />
+          <ScalarProperty Name="PostImage" ColumnName="PostImage" />
+          <ScalarProperty Name="PostId" ColumnName="PostId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Followers">
+      <EntityTypeMapping TypeName="InstagramModel.Follower">
+        <MappingFragment StoreEntitySet="Followers">
+          <ScalarProperty Name="FollowDate" ColumnName="FollowDate" />
+          <ScalarProperty Name="FollowingUserId" ColumnName="FollowingUserId" />
+          <ScalarProperty Name="FollowerUserId" ColumnName="FollowerUserId" />
+          <ScalarProperty Name="FollowerId" ColumnName="FollowerId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Likeds">
+      <EntityTypeMapping TypeName="InstagramModel.Liked">
+        <MappingFragment StoreEntitySet="Liked">
+          <ScalarProperty Name="LikeDate" ColumnName="LikeDate" />
+          <ScalarProperty Name="PostId" ColumnName="PostId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="LikeId" ColumnName="LikeId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Comments">
+      <EntityTypeMapping TypeName="InstagramModel.Comment">
+        <MappingFragment StoreEntitySet="Comments">
+          <ScalarProperty Name="CommentDate" ColumnName="CommentDate" />
+          <ScalarProperty Name="CommentText" ColumnName="CommentText" />
+          <ScalarProperty Name="ParentCommentId" ColumnName="ParentCommentId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="PostId" ColumnName="PostId" />
+          <ScalarProperty Name="CommentId" ColumnName="CommentId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Notifications">
+      <EntityTypeMapping TypeName="InstagramModel.Notification">
+        <MappingFragment StoreEntitySet="Notifications">
+          <ScalarProperty Name="NotificationDate" ColumnName="NotificationDate" />
+          <ScalarProperty Name="NotificationText" ColumnName="NotificationText" />
+          <ScalarProperty Name="NotificationType" ColumnName="NotificationType" />
+          <ScalarProperty Name="PostID" ColumnName="PostID" />
+          <ScalarProperty Name="TriggeringUserID" ColumnName="TriggeringUserID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="NotificationID" ColumnName="NotificationID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

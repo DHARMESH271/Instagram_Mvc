@@ -1,0 +1,283 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="InstagramModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Comments">
+    <Key>
+      <PropertyRef Name="CommentId" />
+    </Key>
+    <Property Name="CommentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PostId" Type="int" />
+    <Property Name="UserId" Type="int" />
+    <Property Name="ParentCommentId" Type="int" />
+    <Property Name="CommentText" Type="varchar(max)" />
+    <Property Name="CommentDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Followers">
+    <Key>
+      <PropertyRef Name="FollowerId" />
+    </Key>
+    <Property Name="FollowerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FollowerUserId" Type="int" Nullable="false" />
+    <Property Name="FollowingUserId" Type="int" Nullable="false" />
+    <Property Name="FollowDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Liked">
+    <Key>
+      <PropertyRef Name="LikeId" />
+    </Key>
+    <Property Name="LikeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="int" />
+    <Property Name="PostId" Type="int" />
+    <Property Name="LikeDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Notifications">
+    <Key>
+      <PropertyRef Name="NotificationID" />
+    </Key>
+    <Property Name="NotificationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserID" Type="int" />
+    <Property Name="TriggeringUserID" Type="int" />
+    <Property Name="PostID" Type="int" />
+    <Property Name="NotificationType" Type="varchar" MaxLength="50" />
+    <Property Name="NotificationText" Type="nvarchar(max)" />
+    <Property Name="NotificationDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="PostUpload">
+    <Key>
+      <PropertyRef Name="PostId" />
+    </Key>
+    <Property Name="PostId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PostImage" Type="varchar(max)" />
+    <Property Name="PostCaption" Type="varchar(max)" />
+    <Property Name="PostDate" Type="datetime" />
+    <Property Name="Id" Type="int" />
+    <Property Name="IsArchieve" Type="bit" />
+    <Property Name="IsDeleted" Type="bit" />
+  </EntityType>
+  <EntityType Name="StoryUpload">
+    <Key>
+      <PropertyRef Name="StoryId" />
+    </Key>
+    <Property Name="StoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StoryImage" Type="varchar(max)" />
+    <Property Name="StoryDate" Type="datetime" />
+    <Property Name="Id" Type="int" />
+  </EntityType>
+  <EntityType Name="UserDetail">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="25" />
+    <Property Name="Email" Type="varchar" MaxLength="25" />
+    <Property Name="UserName" Type="varchar" MaxLength="25" />
+    <Property Name="Password" Type="varchar" MaxLength="25" />
+    <Property Name="DateCreated" Type="datetime" />
+    <Property Name="UserProfileImage" Type="varchar(max)" />
+    <Property Name="Gender" Type="varchar" MaxLength="20" />
+  </EntityType>
+  <Association Name="FK__Comments__PostId__571DF1D5">
+    <End Role="PostUpload" Type="Self.PostUpload" Multiplicity="0..1" />
+    <End Role="Comments" Type="Self.Comments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PostUpload">
+        <PropertyRef Name="PostId" />
+      </Principal>
+      <Dependent Role="Comments">
+        <PropertyRef Name="PostId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Comments__UserId__5812160E">
+    <End Role="UserDetail" Type="Self.UserDetail" Multiplicity="0..1" />
+    <End Role="Comments" Type="Self.Comments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserDetail">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Comments">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Followers__Follo__4E88ABD4">
+    <End Role="UserDetail" Type="Self.UserDetail" Multiplicity="1" />
+    <End Role="Followers" Type="Self.Followers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserDetail">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Followers">
+        <PropertyRef Name="FollowerUserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Followers__Follo__4F7CD00D">
+    <End Role="UserDetail" Type="Self.UserDetail" Multiplicity="1" />
+    <End Role="Followers" Type="Self.Followers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserDetail">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Followers">
+        <PropertyRef Name="FollowingUserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Liked__PostId__534D60F1">
+    <End Role="PostUpload" Type="Self.PostUpload" Multiplicity="0..1" />
+    <End Role="Liked" Type="Self.Liked" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PostUpload">
+        <PropertyRef Name="PostId" />
+      </Principal>
+      <Dependent Role="Liked">
+        <PropertyRef Name="PostId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Liked__UserId__52593CB8">
+    <End Role="UserDetail" Type="Self.UserDetail" Multiplicity="0..1" />
+    <End Role="Liked" Type="Self.Liked" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserDetail">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Liked">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Notificat__PostI__6477ECF3">
+    <End Role="PostUpload" Type="Self.PostUpload" Multiplicity="0..1" />
+    <End Role="Notifications" Type="Self.Notifications" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PostUpload">
+        <PropertyRef Name="PostId" />
+      </Principal>
+      <Dependent Role="Notifications">
+        <PropertyRef Name="PostID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Notificat__Trigg__66603565">
+    <End Role="UserDetail" Type="Self.UserDetail" Multiplicity="0..1" />
+    <End Role="Notifications" Type="Self.Notifications" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserDetail">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Notifications">
+        <PropertyRef Name="TriggeringUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Notificat__UserI__656C112C">
+    <End Role="UserDetail" Type="Self.UserDetail" Multiplicity="0..1" />
+    <End Role="Notifications" Type="Self.Notifications" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserDetail">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Notifications">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__PostUpload__Id__49C3F6B7">
+    <End Role="UserDetail" Type="Self.UserDetail" Multiplicity="0..1" />
+    <End Role="PostUpload" Type="Self.PostUpload" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserDetail">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PostUpload">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__StoryUpload__Id__3B75D760">
+    <End Role="UserDetail" Type="Self.UserDetail" Multiplicity="0..1" />
+    <End Role="StoryUpload" Type="Self.StoryUpload" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserDetail">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="StoryUpload">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Comments_ParentCommentId">
+    <End Role="Comments" Type="Self.Comments" Multiplicity="0..1" />
+    <End Role="Comments1" Type="Self.Comments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Comments">
+        <PropertyRef Name="CommentId" />
+      </Principal>
+      <Dependent Role="Comments1">
+        <PropertyRef Name="ParentCommentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="SpUserLogin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="UserName" Type="varchar" Mode="In" />
+    <Parameter Name="Password" Type="varchar" Mode="In" />
+  </Function>
+  <EntityContainer Name="InstagramModelStoreContainer">
+    <EntitySet Name="Comments" EntityType="Self.Comments" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Followers" EntityType="Self.Followers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Liked" EntityType="Self.Liked" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Notifications" EntityType="Self.Notifications" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PostUpload" EntityType="Self.PostUpload" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="StoryUpload" EntityType="Self.StoryUpload" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserDetail" EntityType="Self.UserDetail" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Comments__PostId__571DF1D5" Association="Self.FK__Comments__PostId__571DF1D5">
+      <End Role="PostUpload" EntitySet="PostUpload" />
+      <End Role="Comments" EntitySet="Comments" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Comments__UserId__5812160E" Association="Self.FK__Comments__UserId__5812160E">
+      <End Role="UserDetail" EntitySet="UserDetail" />
+      <End Role="Comments" EntitySet="Comments" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Followers__Follo__4E88ABD4" Association="Self.FK__Followers__Follo__4E88ABD4">
+      <End Role="UserDetail" EntitySet="UserDetail" />
+      <End Role="Followers" EntitySet="Followers" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Followers__Follo__4F7CD00D" Association="Self.FK__Followers__Follo__4F7CD00D">
+      <End Role="UserDetail" EntitySet="UserDetail" />
+      <End Role="Followers" EntitySet="Followers" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Liked__PostId__534D60F1" Association="Self.FK__Liked__PostId__534D60F1">
+      <End Role="PostUpload" EntitySet="PostUpload" />
+      <End Role="Liked" EntitySet="Liked" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Liked__UserId__52593CB8" Association="Self.FK__Liked__UserId__52593CB8">
+      <End Role="UserDetail" EntitySet="UserDetail" />
+      <End Role="Liked" EntitySet="Liked" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Notificat__PostI__6477ECF3" Association="Self.FK__Notificat__PostI__6477ECF3">
+      <End Role="PostUpload" EntitySet="PostUpload" />
+      <End Role="Notifications" EntitySet="Notifications" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Notificat__Trigg__66603565" Association="Self.FK__Notificat__Trigg__66603565">
+      <End Role="UserDetail" EntitySet="UserDetail" />
+      <End Role="Notifications" EntitySet="Notifications" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Notificat__UserI__656C112C" Association="Self.FK__Notificat__UserI__656C112C">
+      <End Role="UserDetail" EntitySet="UserDetail" />
+      <End Role="Notifications" EntitySet="Notifications" />
+    </AssociationSet>
+    <AssociationSet Name="FK__PostUpload__Id__49C3F6B7" Association="Self.FK__PostUpload__Id__49C3F6B7">
+      <End Role="UserDetail" EntitySet="UserDetail" />
+      <End Role="PostUpload" EntitySet="PostUpload" />
+    </AssociationSet>
+    <AssociationSet Name="FK__StoryUpload__Id__3B75D760" Association="Self.FK__StoryUpload__Id__3B75D760">
+      <End Role="UserDetail" EntitySet="UserDetail" />
+      <End Role="StoryUpload" EntitySet="StoryUpload" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Comments_ParentCommentId" Association="Self.FK_Comments_ParentCommentId">
+      <End Role="Comments" EntitySet="Comments" />
+      <End Role="Comments1" EntitySet="Comments" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

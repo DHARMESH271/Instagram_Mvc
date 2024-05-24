@@ -1,0 +1,206 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Profile</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="~/MyjavaScript/MyJavaScriptfile.js"></script>
+    <style>
+        #preview-container {
+            display: none;
+            margin-top: 20px;
+            position: relative;
+        }
+
+        #preview-image {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            margin-bottom: 10px;
+        }
+
+        .close-preview-btn {
+            position: absolute;
+            top: 25px;
+            right: 318px;
+            background-color: red;
+            color: #fff;
+            border: none;
+            font-size: 15px;
+            cursor: pointer;
+        }
+        .error {
+            color: red;
+            font-size: 14px;
+            font-family: Arial, sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="edit-profile">
+        @*<h1 class="mt-2">Edit Profile</h1>
+        <div class="row">
+            <div class="col-lg-6">
+                <form id="edit-profile-form">
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" class="form-control" id="username" placeholder="Enter username">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" class="form-control" id="email" placeholder="Enter email">
+                    </div>
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control" id="name" placeholder="Enter name">
+                    </div>
+                    <div class="form-group">
+                        <label>Gender</label><br>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="gender" id="male" value="male">
+                            <label class="form-check-label" for="male">Male</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="gender" id="female" value="female">
+                            <label class="form-check-label" for="female">Female</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="avatar">Upload Photo</label>
+                        <input type="file" class="form-control-file" id="avatar" accept="image/*">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                </form>
+                <div id="preview-container" class="mb-2">
+                    <h3>Profile Preview</h3>
+                    <button id="close-preview" class="close-preview-btn">&times;</button>
+                    <img id="preview-image" src="#" alt="Preview Image">
+                </div>
+            </div>
+
+            <div class="col-lg-6 text-center">
+                <h3>Previous Photo</h3>
+                <img src="./images/upload.png"  onerror="this.src='/Images/admin.jpg';" class="img-fluid" alt="Previous Photo">
+            </div>
+        </div>*@
+        <script>
+            fetchUserEditDetail();
+            function fetchUserEditDetail() {
+                $.ajax({
+                    url: '/InstagramMvc/UserEditProfile',
+                    method: 'GET',
+                    success: function (data) {
+                       
+                        if (data.success) {
+                            console.log(data.userdetail);
+                            UserName = console.log(data.userdetail.UserName);
+                            Name = console.log(data.userdetail.Name)
+                            Email = console.log(data.userdetail.Email)
+                            Gender = console.log(data.userdetail.Gender)
+                            
+                            var storyHtml = `
+                                                                   <h1 class="mt-2">Edit Profile</h1>
+                                                                        <div class="row">
+                                                                            <div class="col-lg-6">
+                                                                                <form id="profileForm" enctype="multipart/form-data">
+                                                                                    <div class="form-group">
+                                                                                        <label for="username">Username</label>
+                                                                                        <input type="text" class="form-control" id="username" placeholder="Enter username">
+                                                                                        <span class="error" id="usernameError"></span>
+                                                                                    </div>
+                                                                                    <div class="form-group">
+                                                                                        <label for="email">Email</label>
+                                                                                        <input type="email" class="form-control" id="email" placeholder="Enter email">
+                                                                                        <span class="error" id="emailError"></span>
+                                                                                    </div>
+                                                                                    <div class="form-group">
+                                                                                        <label for="name">Name</label>
+                                                                                        <input type="text" class="form-control" id="name" placeholder="Enter name">
+                                                                                        <span class="error" id="nameError"></span>
+                                                                                    </div>
+                                                                                    <div class="form-group">
+                                                                                        <label>Gender</label><br>
+                                                                                        <div class="form-check form-check-inline">
+                                                                                            <input class="form-check-input" type="radio" name="gender" id="male" value="Male">
+                                                                                            <label class="form-check-label" for="male">Male</label>
+                                                                                        </div>
+                                                                                        <div class="form-check form-check-inline">
+                                                                                            <input class="form-check-input" type="radio" name="gender" id="female" value="Female">
+                                                                                            <label class="form-check-label" for="female">Female</label>
+                                                                                        </div>
+                                                                                        <span class="error" id="genderError"></span>
+                                                                                    </div>
+                                                                                    <div class="form-group">
+                                                                                        <label for="avatar">Upload Photo</label>
+                                                                                        <input type="file" class="form-control-file" name="uploadimage" id="avatar" accept="image/*">
+                                                                                        <span class="error" id="fileErrorPost"></span>
+                                                                                    </div>
+                                                                                    <button class="btn btn-primary" type="submit" onclick="EditProfile()" id="submitButton">
+                                                                                         Save Changes
+                                                                                    </button>
+                                                                                </form>
+                                                                                <div id="preview-container" class="mb-2">
+                                                                                    <h3>Profile Preview</h3>
+                                                                                    <button id="close-preview" class="close-preview-btn">&times;</button>
+                                                                                    <img id="preview-image" src="#" alt="Preview Image">
+                                                                                </div>
+                                                                            </div>
+
+                                                                            <div class="col-lg-6 text-center">
+                                                                                <h3>Previous Profile</h3>
+                                                                                <img src="${data.userdetail.UserProfileImage}"  onerror="this.src='/Images/admin.jpg';" class="img-fluid" alt="Previous Photo">
+                                                                            </div>
+                                                                        </div>
+                                                                    `;
+                            $('#edit-profile').append(storyHtml);
+
+                            $('#name').val(data.userdetail.Name);
+                            $('#username').val(data.userdetail.UserName);
+                            $('#email').val(data.userdetail.Email);
+                            $('input[name="gender"][value="' + data.userdetail.Gender + '"]').prop('checked', true);
+                           // $('#edit-profile').val() = Gender;
+
+                        }
+                    },
+                    error: function (err) {
+                        console.error("Error fetching stories:", err);
+                    }
+                });
+            }
+
+
+        </script>
+
+
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // When file input changes, show preview
+            $('#avatar').on('change', function (e) {
+                var file = e.target.files[0];
+                if (file) {
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        $('#preview-image').attr('src', e.target.result);
+                        $('#preview-container').show();
+                    }
+                    reader.readAsDataURL(file);
+                }
+            });
+
+            // Close preview and empty file input on button click
+            $('#close-preview').on('click', function () {
+                $('#avatar').val(''); // Clear file input
+                $('#preview-container').hide();
+            });
+
+            
+            
+        });
+    </script>
+</body>
+</html>

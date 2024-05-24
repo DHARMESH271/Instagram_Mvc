@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="35ba534401f64dd484c803c0e956fedc" Name="Diagram1">
+        <EntityTypeShape EntityType="InstagramModel.UserDetail" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="InstagramModel.StoryUpload" Width="1.5" PointX="3" PointY="3.375" IsExpanded="true" />
+        <AssociationConnector Association="InstagramModel.FK__StoryUpload__Id__3B75D760" />
+        <EntityTypeShape EntityType="InstagramModel.PostUpload" Width="1.5" PointX="3" PointY="5.75" />
+        <AssociationConnector Association="InstagramModel.FK__PostUpload__Id__49C3F6B7" />
+        <EntityTypeShape EntityType="InstagramModel.Follower" Width="1.5" PointX="2.875" PointY="9.625" />
+        <AssociationConnector Association="InstagramModel.FK__Followers__Follo__4E88ABD4" />
+        <AssociationConnector Association="InstagramModel.FK__Followers__Follo__4F7CD00D" />
+        <EntityTypeShape EntityType="InstagramModel.Liked" Width="1.5" PointX="5.25" PointY="3.5" />
+        <AssociationConnector Association="InstagramModel.FK__Liked__PostId__534D60F1" />
+        <AssociationConnector Association="InstagramModel.FK__Liked__UserId__52593CB8" />
+        <EntityTypeShape EntityType="InstagramModel.Comment" Width="1.5" PointX="6.25" PointY="8.375" />
+        <AssociationConnector Association="InstagramModel.FK__Comments__PostId__571DF1D5" />
+        <AssociationConnector Association="InstagramModel.FK__Comments__UserId__5812160E" />
+        <EntityTypeShape EntityType="InstagramModel.Notification" Width="1.5" PointX="8.25" PointY="3.375" />
+        <AssociationConnector Association="InstagramModel.FK__Notificat__PostI__6477ECF3" />
+        <AssociationConnector Association="InstagramModel.FK__Notificat__Trigg__66603565" />
+        <AssociationConnector Association="InstagramModel.FK__Notificat__UserI__656C112C" />
+        <AssociationConnector Association="InstagramModel.FK_Comments_ParentCommentId" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
